@@ -8,7 +8,7 @@ class WordCreator
 
   def initialize(word_guesser)
     @desired_words = []
-    @turns_left = 11
+    @turns_left = 13
     @incorrect_guesses = []
     @lines = File.open('google-10000-english-no-swears.txt', 'r').each do |line|
       word = line.to_s.strip
