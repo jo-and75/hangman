@@ -13,7 +13,8 @@ class StartGame
   def play_game  
     loop do 
       @word_guesser.guess_letter 
-      @word_creator.analyze_guess if @word_guesser.submit_guess == true  
+      @word_creator.analyze_guess if @word_guesser.submit_guess == true   
+      break if @word_creator.turns_left == 0
     end
   end 
 end
