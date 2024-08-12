@@ -14,7 +14,8 @@ class WordCreator
    puts @chosen_word = @desired_words.sample.split("")
     @board = Array.new(@chosen_word.length, '_')  
     @word_guesser = word_guesser 
-    @turns_left = 11
+    @turns_left = 11 
+    @incorrect_guesses = []
     display_board(@board)
   end
 
