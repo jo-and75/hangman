@@ -26,12 +26,12 @@ class StartGame
       if @word_creator.chosen_word == @word_creator.board
         puts 'GAME OVER. YOU WIN!! :)'
         true
-      else
-        puts 'GAME OVER. YOU LOSE :('
+      else 
+        puts "Correct word was: #{@word_creator.chosen_word.join}"
+        puts 'GAME OVER. YOU LOSE :(' 
         true
       end
     end
   end
 end
 
-play = StartGame.new
