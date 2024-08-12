@@ -10,9 +10,10 @@ class WordCreator
       word = line.to_s.strip
       @desired_words << word if word.length >= 5 && word.length < 13
     end
-    @chosen_word = @desired_words.sample.split('')
-    @board = Array.new(@chosen_word.length, '_') 
+   puts @chosen_word = @desired_words.sample.split("")
+    @board = Array.new(@chosen_word.length, '_')  
     @word_guesser = word_guesser 
+    @turns_left = 11
     display_board(@board)
   end
 
@@ -27,12 +28,21 @@ class WordCreator
     puts # This just moves to the next line after displaying the board 
   end 
 
-  def analyze_guess
-    if @chosen_word.include?(@word_guesser.letter_choice)
-      puts 'YES'
+  def analyze_guess  
+    @turns_left -= 1
+    letter_positions = []
+    if @chosen_word.include?(@word_guesser.letter_choice) 
+     @chosen_word.each_with_index do |letter,index| 
+      letter_positions << index if letter == @word_guesser.letter_choice
+      p letter_positions
+     end
+      letter_positions.each do |element| 
+        @board[element] = @word_guesser.letter_choice
+      end
     else
-      puts 'NO'
-    end 
-    @word_guesser.guess_letter
+      puts 'Chosen letter is not in word. Please try again.'
+    end  
+    display_board(@board) 
+    puts "You have #{@turns_left} tries left."
   end
 end

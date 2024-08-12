@@ -11,11 +11,9 @@ class StartGame
   end 
 
   def play_game  
-    @word_guesser.guess_letter 
-    if @word_guesser.submit_guess == true 
-      @word_creator.analyze_guess 
-    else 
+    loop do 
       @word_guesser.guess_letter 
+      @word_creator.analyze_guess if @word_guesser.submit_guess == true  
     end
   end 
 end
