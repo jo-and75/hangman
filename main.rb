@@ -22,7 +22,7 @@ class StartGame
     if @word_creator.chosen_word == @word_creator.board
       puts 'GAME OVER. YOU WIN!! :)'
       true
-    elsif @word_creator.turns_left == 0
+    elsif @word_creator.turns_left.zero?
       if @word_creator.chosen_word == @word_creator.board
         puts 'GAME OVER. YOU WIN!! :)'
         true

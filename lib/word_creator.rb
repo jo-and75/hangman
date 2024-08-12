@@ -33,19 +33,18 @@ class WordCreator
 
   def analyze_guess
     @turns_left -= 1
-    letter_positions = []
     if @chosen_word.include?(@word_guesser.letter_choice)
       @chosen_word.each_with_index do |letter, index|
-        letter_positions << index if letter == @word_guesser.letter_choice
-      end
-      letter_positions.each do |element|
-        @board[element] = @word_guesser.letter_choice
+        @board[index] = letter if letter == @word_guesser.letter_choice
       end
     else
       @incorrect_guesses << @word_guesser.letter_choice
-      puts 'Chosen letter is not in word. Please try again.'
-
+      puts 'Chosen letter is not in the word. Please try again.'
     end
+    give_feedback
+  end
+
+  def give_feedback
     print @incorrect_guesses
     puts # resets position of cursor
     display_board(@board)
