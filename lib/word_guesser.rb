@@ -7,7 +7,7 @@ class WordGuesser
     loop do
       print "Pick a letter from a-z: " 
       @letter_choice = gets.downcase.strip   
-      if @letter_choice.between?('a','z') 
+      if @letter_choice.between?('a','z') && @letter_choice.length == 1
         submit_guess  
         break
       else 
