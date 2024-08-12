@@ -14,9 +14,14 @@ class StartGame
     loop do 
       @word_guesser.guess_letter 
       @word_creator.analyze_guess if @word_guesser.submit_guess == true   
-      break if @word_creator.turns_left == 0
+      break if end_game 
     end
   end 
+  
+  def end_game 
+    return true if @word_creator.turns_left  
+    return true if @word_creator.chosen_word == @word_creator.board
+  end
 end
  
 play = StartGame.new
