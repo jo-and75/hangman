@@ -1,5 +1,7 @@
-class WordGuesser  
-  def initialize
+class WordGuesser   
+  attr_accessor :letter_choice
+  def initialize(word_creator) 
+    @word_creator = word_creator
     guess_letter
   end 
   
@@ -20,7 +22,5 @@ class WordGuesser
     print 'Are you sure you want to submit this letter: ' 
     answer = gets.upcase.strip 
     puts answer
-  end
+  end 
 end
-
-play = WordGuesser.new
