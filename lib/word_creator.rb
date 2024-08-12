@@ -4,7 +4,7 @@ require_relative 'word_guesser'
 puts 'Game loaded'
 
 class WordCreator  
-  attr_accessor :turns_left
+  attr_accessor :turns_left , :chosen_word , :board
   def initialize(word_guesser)
     @desired_words = []
     @lines = File.open('google-10000-english-no-swears.txt', 'r').each do |line|

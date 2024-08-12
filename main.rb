@@ -19,7 +19,7 @@ class StartGame
   end 
   
   def end_game 
-    return true if @word_creator.turns_left  
+    return true if @word_creator.turns_left == 0
     return true if @word_creator.chosen_word == @word_creator.board
   end
 end
