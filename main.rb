@@ -19,8 +19,16 @@ class StartGame
   end 
   
   def end_game 
-    return true if @word_creator.turns_left == 0
-    return true if @word_creator.chosen_word == @word_creator.board
+    if @word_creator.chosen_word == @word_creator.board  
+      puts 'GAME OVER. YOU WIN!! :)'
+    elsif @word_creator.turns_left == 0 
+      if @word_creator.chosen_word == @word_creator.board 
+      puts 'GAME OVER. YOU WIN!! :)' 
+      return true  
+      else 
+        puts 'GAME OVER. YOU LOSE :('
+      end
+    end 
   end
 end
  
