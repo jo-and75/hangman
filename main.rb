@@ -20,13 +20,17 @@ class Game
     )
   end
 
-  def play_game
+  def start_saved_game
     puts 'Do you want to load a saved game? (yes/no)'
-    if gets.downcase.strip == 'yes'
-      puts 'Enter the filename (without extension):'
-      filename = gets.strip
-      load_game(filename)
-    end
+    return unless gets.downcase.strip == 'yes'
+
+    puts 'Enter the filename (without extension):'
+    filename = gets.strip
+    load_game(filename)
+  end
+
+  def play_game
+    start_saved_game
     loop do
       @word_guesser.guess_letter
       @word_creator.analyze_guess if @word_guesser.submit_guess == true
@@ -35,7 +39,6 @@ class Game
         save_game if gets.downcase.strip == 'yes'
       end
       break if end_game
-      # load_saved_state
     end
   end
 
@@ -58,12 +61,6 @@ class Game
     File.open("saved_games/#{filename}", 'w') { |file| file.write save_state }
     puts "Game saved as #{filename}"
   end
-
-  # def read_game_file
-  #   @file_lines = File.open('saved_games/8367_game.yaml', 'r').each do |line|
-  #     puts line
-  #   end
-  # end
 
   def load_game(filename)
     if File.exist?("saved_games/#{filename}_game.yaml")
