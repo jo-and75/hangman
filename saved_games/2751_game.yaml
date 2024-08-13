@@ -1,0 +1,26 @@
+---
+turns_left: 6
+chosen_word:
+- e
+- m
+- p
+- i
+- r
+- i
+- c
+- a
+- l
+board:
+- _
+- _
+- p
+- i
+- _
+- i
+- c
+- a
+- _
+incorrect_guesses:
+- s
+- t
+- "n"

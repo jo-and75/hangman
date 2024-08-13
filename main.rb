@@ -3,7 +3,6 @@
 require 'yaml'
 require_relative 'lib/word_creator'
 require_relative 'lib/word_guesser'
-require_relative 'lib/Serializable'
 
 class Game
   def initialize
