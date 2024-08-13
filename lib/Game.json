@@ -1,1 +1,1 @@
-{"@word_guesser":{"letter_choice":"s"},"@word_creator":{"turns_left":12,"chosen_word":["s","h","o","w","c","a","s","e"],"board":["s","_","_","_","_","_","s","_"],"incorrect_guesses":[],"word_guesser":{"letter_choice":"s"}}}
+{"word_guesser":{"letter_choice":"s"},"word_creator":{"turns_left":12,"chosen_word":["p","r","e","d","i","c","t"],"board":["_","_","_","_","_","_","_"],"incorrect_guesses":["s"],"word_guesser":{"letter_choice":"s"}}}

@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
+require 'yaml'
 require_relative 'word_guesser'
 puts 'Game loaded'
 
 class WordCreator
-  attr_accessor :turns_left, :chosen_word, :board
+  attr_accessor :turns_left, :chosen_word, :board, :incorrect_guesses, :word_guesser
 
   def initialize(word_guesser)
     @desired_words = []
@@ -18,25 +19,6 @@ class WordCreator
     @board = Array.new(@chosen_word.length, '_')
     @word_guesser = word_guesser
     display_board(@board)
-  end
-
-  def to_hash
-    {
-      turns_left: @turns_left,
-      chosen_word: @chosen_word,
-      board: @board,
-      incorrect_guesses: @incorrect_guesses,
-      word_guesser: @word_guesser.to_hash
-    }
-  end
-
-  def from_hash(hash)
-    @chosen_word = hash['chosen_word']
-    @board = hash['board']
-    @turns_left = hash['turns_left']
-    @incorrect_guesses = hash['incorrect_guesses']
-    @word_guesser = WordGuesser.new
-    @word_guesser.from_hash(hash['word_guesser'])
   end
 
   def display_board(board)

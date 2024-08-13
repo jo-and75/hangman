@@ -2,17 +2,7 @@ class WordGuesser
   attr_accessor :letter_choice
 
   def initialize
-    @letter_choice = ' '
-  end
-
-  def to_hash
-    {
-      letter_choice: @letter_choice
-    }
-  end
-
-  def from_hash(hash)
-    @letter_choice = hash['letter_choice']
+    @letter_choice = ''
   end
 
   def guess_letter
