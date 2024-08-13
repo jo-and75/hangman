@@ -20,14 +20,14 @@ class WordCreator
     display_board(@board)
   end
 
-  def to_json(*_args)
+  def to_yaml(*_args)
     {
       # word_guesser: @word_guesser,
       turns_left: @turns_left,
       chosen_word: @chosen_word,
       board: @board,
       incorrect_guesses: @incorrect_guesses
-    }.to_json
+    }.to_yaml
   end
 
   def display_board(board)

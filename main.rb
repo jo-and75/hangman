@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-require 'json'
 require_relative 'lib/word_creator'
 require_relative 'lib/word_guesser'
-
+require_relative 'lib/Serializable'
 class Game
+  include Serializable
+
   def initialize
     @word_guesser = WordGuesser.new
     @word_creator = WordCreator.new(@word_guesser)
@@ -12,17 +13,14 @@ class Game
   end
 
   def to_json(*_args)
-    {
-      # word_guesser: @word_guesser,
-      word_creator: @word_creator
-    }.to_json
+    serialize
   end
 
   def play_game
     loop do
       @word_guesser.guess_letter
       @word_creator.analyze_guess if @word_guesser.submit_guess == true
-      if (@word_creator.turns_left % 7).zero?
+      if (@word_creator.turns_left % 6).zero?
         print 'Type yes or no if you would like to save game: '
         save_game if gets.downcase.strip == 'yes'
       end
@@ -45,7 +43,7 @@ class Game
 
   def save_game
     File.open('lib/Game.json', 'w') do |file|
-      file.write(JSON.dump(self))
+      file.write(to_json)
     end
     puts 'Game saved'
     exit

@@ -1,1 +1,1 @@
-{"word_creator":{"turns_left":11,"chosen_word":["w","a","l","e","s"],"board":["w","_","_","_","s"],"incorrect_guesses":[]}}
+{"@word_guesser":"#<WordGuesser:0x00007d4de17d69d0>","@word_creator":"#<WordCreator:0x00007d4de1891780>"}
