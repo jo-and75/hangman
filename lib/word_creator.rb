@@ -20,14 +20,19 @@ class WordCreator
     display_board(@board)
   end
 
-  def to_yaml(*_args)
+  def to_hash
     {
-      # word_guesser: @word_guesser,
       turns_left: @turns_left,
       chosen_word: @chosen_word,
       board: @board,
       incorrect_guesses: @incorrect_guesses
-    }.to_yaml
+    }
+  end
+
+  def from_hash(hash)
+    @chosen_word = hash['chosen_word']
+    @board = hash['board']
+    @turns_left = hash['turns_left']
   end
 
   def display_board(board)

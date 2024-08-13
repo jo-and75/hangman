@@ -48,6 +48,15 @@ class Game
     puts 'Game saved'
     exit
   end
+
+  def self.load_game
+    game = new
+    File.open('lib/Game.json', 'r') do |file|
+      json_data = file.read
+      game.unserialize(json_data)
+    end
+    game
+  end
 end
 
 Game.new
