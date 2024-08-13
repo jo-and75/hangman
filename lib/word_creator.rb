@@ -22,7 +22,7 @@ class WordCreator
 
   def to_json(*_args)
     {
-      word_guesser: @word_guesser,
+      # word_guesser: @word_guesser,
       turns_left: @turns_left,
       chosen_word: @chosen_word,
       board: @board,

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'json'
 require_relative 'lib/word_creator'
 require_relative 'lib/word_guesser'
 
@@ -12,7 +13,7 @@ class Game
 
   def to_json(*_args)
     {
-      word_guesser: @word_guesser,
+      # word_guesser: @word_guesser,
       word_creator: @word_creator
     }.to_json
   end
@@ -21,6 +22,10 @@ class Game
     loop do
       @word_guesser.guess_letter
       @word_creator.analyze_guess if @word_guesser.submit_guess == true
+      if (@word_creator.turns_left % 7).zero?
+        print 'Type yes or no if you would like to save game: '
+        save_game if gets.downcase.strip == 'yes'
+      end
       break if end_game
     end
   end
