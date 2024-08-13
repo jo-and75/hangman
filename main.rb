@@ -3,11 +3,18 @@
 require_relative 'lib/word_creator'
 require_relative 'lib/word_guesser'
 
-class StartGame
+class Game
   def initialize
     @word_guesser = WordGuesser.new
     @word_creator = WordCreator.new(@word_guesser)
     play_game
+  end
+
+  def to_json(*_args)
+    {
+      word_guesser: @word_guesser,
+      word_creator: @word_creator
+    }.to_json
   end
 
   def play_game
@@ -30,6 +37,14 @@ class StartGame
       false
     end
   end
+
+  def save_game
+    File.open('lib/Game.json', 'w') do |file|
+      file.write(JSON.dump(self))
+    end
+    puts 'Game saved'
+    exit
+  end
 end
 
-StartGame.new
+Game.new
