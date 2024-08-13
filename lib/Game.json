@@ -1,1 +1,1 @@
-{"@word_guesser":"#<WordGuesser:0x00007d4de17d69d0>","@word_creator":"#<WordCreator:0x00007d4de1891780>"}
+{"@word_guesser":{"letter_choice":"s"},"@word_creator":{"turns_left":12,"chosen_word":["s","h","o","w","c","a","s","e"],"board":["s","_","_","_","_","_","s","_"],"incorrect_guesses":[],"word_guesser":{"letter_choice":"s"}}}

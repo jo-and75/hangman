@@ -3,13 +3,14 @@
 require_relative 'lib/word_creator'
 require_relative 'lib/word_guesser'
 require_relative 'lib/Serializable'
+
 class Game
   include Serializable
 
   def initialize
     @word_guesser = WordGuesser.new
     @word_creator = WordCreator.new(@word_guesser)
-    play_game
+    # play_game
   end
 
   def to_json(*_args)
@@ -51,12 +52,27 @@ class Game
 
   def self.load_game
     game = new
-    File.open('lib/Game.json', 'r') do |file|
-      json_data = file.read
-      game.unserialize(json_data)
+    if File.exist?('lib/Game.json')
+      File.open('lib/Game.json', 'r') do |file|
+        json_data = file.read
+        game.unserialize(json_data)
+      end
+    else
+      puts 'No saved game found.'
     end
     game
   end
+
+  def self.load_saved_game
+    print 'Type yes if you would like to load a saved game or no if you would like to start a new game: '
+    if gets.downcase.strip == 'yes'
+      game = load_game
+      game.play_game
+    else
+      new_game = new
+      new_game.play_game
+    end
+  end
 end
 
-Game.new
+Game.load_saved_game

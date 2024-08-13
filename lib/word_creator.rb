@@ -25,7 +25,8 @@ class WordCreator
       turns_left: @turns_left,
       chosen_word: @chosen_word,
       board: @board,
-      incorrect_guesses: @incorrect_guesses
+      incorrect_guesses: @incorrect_guesses,
+      word_guesser: @word_guesser.to_hash
     }
   end
 
@@ -33,6 +34,9 @@ class WordCreator
     @chosen_word = hash['chosen_word']
     @board = hash['board']
     @turns_left = hash['turns_left']
+    @incorrect_guesses = hash['incorrect_guesses']
+    @word_guesser = WordGuesser.new
+    @word_guesser.from_hash(hash['word_guesser'])
   end
 
   def display_board(board)
